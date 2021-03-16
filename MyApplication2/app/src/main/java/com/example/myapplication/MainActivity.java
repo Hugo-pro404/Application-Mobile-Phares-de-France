@@ -2,12 +2,17 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
+import com.example.myapplication.ui.MapsFragment;
 import com.example.myapplication.ui.phare.PhareContent;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -52,12 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {

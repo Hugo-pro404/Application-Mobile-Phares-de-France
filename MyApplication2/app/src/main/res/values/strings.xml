@@ -1,14 +1,16 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Phares de France</string>
+    <string name="navigation_drawer_open">Ouvrir Menu de Navigation</string>
+    <string name="navigation_drawer_close">Fermer Menu de Navigation</string>
+    <string name="nav_header_title">Phares Français</string>
+    <string name="nav_header_desc">En-tête de Navigation</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Accueil</string>
+    <string name="phare_home_description">Photo de Phare pour le menu home</string>
     <string name="menu_list">Liste des Phares</string>
     <string name="menu_map">Carte</string>
     <string name="menu_propos">A Propos</string>
+    <string name="text_mail">clerguehugo@gmail.com</string>
+    <string name="text_legend">Vidéo de Présentation de Phare</string>
+    <string name="text_mailAmu">hugo.clergue@etu.univ-amu.fr</string>
 </resources>

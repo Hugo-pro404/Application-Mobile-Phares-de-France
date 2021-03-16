@@ -2,9 +2,6 @@ package com.example.myapplication.ui.phare;
 
 
 import com.example.myapplication.MainActivity;
-import com.example.myapplication.R;
-import com.example.myapplication.ui.MapsFragment;
-import com.google.android.gms.maps.GoogleMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,13 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -149,8 +139,9 @@ public class PhareContent {
                     lon = obj.getDouble("lon");
                 }
 
-
                 ITEMS.add(new PhareItem(id, nom, region, auteur, construction, hauteur, eclat, periode, portee, automatisation, caractere, lat, lon));
+
+
 
             }
 

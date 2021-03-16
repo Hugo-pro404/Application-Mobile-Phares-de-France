@@ -39,8 +39,9 @@ public class MyPhareRecyclerViewAdapter extends RecyclerView.Adapter<MyPhareRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
         holder.mNomView.setText(mValues.get(position).nom);
+        holder.mRegionView.setText(mValues.get(position).region);
+        holder.mConstructionView.setText(String.valueOf(mValues.get(position).construction));
         holder.mView.setOnClickListener (new View.OnClickListener() {
         @Override
         public void onClick (View v) {
@@ -74,20 +75,19 @@ public class MyPhareRecyclerViewAdapter extends RecyclerView.Adapter<MyPhareRecy
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
         public final TextView mNomView;
+        public final TextView mRegionView;
+        public final TextView mConstructionView;
+
         public PhareItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
             mNomView = (TextView) view.findViewById(R.id.nom);
-        }
+            mRegionView = (TextView) view.findViewById(R.id.region);
+            mConstructionView = (TextView) view.findViewById(R.id.construction);
 
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mNomView.getText() + "'";
         }
     }
 }

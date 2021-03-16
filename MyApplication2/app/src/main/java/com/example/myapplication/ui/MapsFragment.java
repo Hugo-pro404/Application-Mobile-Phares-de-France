@@ -11,14 +11,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.ui.phare.PhareContent;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.internal.IGoogleMapDelegate;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.List;
 
 public class MapsFragment extends Fragment {
 
@@ -43,9 +55,16 @@ public class MapsFragment extends Fragment {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+//        AddMarkerPhareJSON(googleMap);
+
+        //Utilisation du JSON pour créer des markers avec les lat et lon des phares.
+        List<PhareContent.PhareItem> Phares = PhareContent.ITEMS;
+        for (PhareContent.PhareItem Item : Phares ){
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(Item.getLat(), Item.getLon())).title(Item.getNom()).icon(BitmapDescriptorFactory.fromResource(R.drawable.lighthouse_iconpetit)));
+        }
         LatLng GARDANNE = new LatLng(43.45, 5.4717363151);
 
-        googleMap.animateCamera(CameraUpdateFactory.newLatLng(GARDANNE), 2000, null);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(GARDANNE, 4));
         if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -57,10 +76,96 @@ public class MapsFragment extends Fragment {
 };
 
 
-
-//    public static void CreateMarker (GoogleMap googleMap, double lat, double lon, String nom) {
-//        LatLng Phare = new LatLng(lat, lon);
-//        googleMap.addMarker(new MarkerOptions().position(Phare).title(nom));
+//Première tentative de Création de marker en rechargeant le Json, mais ce n'était pas très propre
+//    public static void AddMarkerPhareJSON(GoogleMap googleMap) {
+//
+//        try {
+//
+//
+//            BufferedReader br = new BufferedReader(new InputStreamReader(MainActivity.getContext().getAssets().open("phares_all.json")));
+//            StringBuilder sb = new StringBuilder();
+//
+//            String line = null;
+//            while ((line = br.readLine()) != null)
+//            {
+//                sb.append(line + "\n");
+//            }
+//
+//
+//            String str = sb.toString();
+//            JSONObject jObjConnection = new JSONObject(str);
+//            JSONObject jsonBix = jObjConnection.getJSONObject("phares");
+//            JSONArray jsonA = jsonBix.getJSONArray("liste");
+//
+//            for(int i = 0 ; i < jsonA.length() ; i++)
+//            {
+//
+//                JSONObject obj = (JSONObject)jsonA.get(i);
+//
+//                String id = "";
+//                String nom = "";
+//                String region = "";
+//                String auteur = "";
+//                int construction = 0;
+//                int hauteur = 0;
+//                int eclat = 0;
+//                int periode = 0;
+//                int portee = 0;
+//                int automatisation = 0;
+//                String caractere = "";
+//                double lat = 0;
+//                double lon = 0;
+//
+//                if (!obj.isNull("id")) {
+//                    id = obj.getString("id");
+//                }
+//                if (!obj.isNull("name")) {
+//                    nom = obj.getString("name");
+//                }
+//                if (!obj.isNull("region")) {
+//                    region = obj.getString("region");
+//                }
+//                if (!obj.isNull("auteur")) {
+//                    auteur = obj.getString("auteur");
+//                }
+//                if (!obj.isNull("construction")) {
+//                    construction = obj.getInt("construction");
+//                }
+//                if (!obj.isNull("hauteur")) {
+//                    hauteur = obj.getInt("hauteur");
+//                }
+//                if (!obj.isNull("eclat")) {
+//                    eclat = obj.getInt("eclat");
+//                }
+//                if (!obj.isNull("periode")) {
+//                    periode = obj.getInt("periode");
+//                }
+//                if (!obj.isNull("portee")) {
+//                    portee = obj.getInt("portee");
+//                }
+//                if (!obj.isNull("automatisation")) {
+//                    automatisation = obj.getInt("automatisation");
+//                }
+//                if (!obj.isNull("caractere")) {
+//                    caractere = obj.getString("caractere");
+//                }
+//                if (!obj.isNull("lat")) {
+//                    lat = obj.getDouble("lat");
+//                }
+//                if (!obj.isNull("lon")) {
+//                    lon = obj.getDouble("lon");
+//                }
+//
+//                LatLng phare = new LatLng(lat, lon);
+//
+//                googleMap.addMarker(new MarkerOptions().position(phare).title(nom));
+//
+//            }
+//
+//        }
+//        catch (IOException | JSONException e) {
+//            e.printStackTrace();
+//        }
 //    }
 
     @Nullable

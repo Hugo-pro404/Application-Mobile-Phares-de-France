@@ -10,7 +10,8 @@ public class ProposViewModel extends ViewModel {
 
     public ProposViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is A Propos fragment");
+        mText.setValue("Application réalisé par Hugo Clergue");
+
     }
 
     public LiveData<String> getText() {
