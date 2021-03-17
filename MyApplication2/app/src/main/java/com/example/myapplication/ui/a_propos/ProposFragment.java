@@ -3,7 +3,6 @@ package com.example.myapplication.ui.a_propos;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.net.UrlQuerySanitizer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +20,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.myapplication.R;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class ProposFragment extends Fragment {
 
@@ -58,7 +56,7 @@ public class ProposFragment extends Fragment {
                     videoView.start();
             }
         });
-        final TextView textNomView = root.findViewById(R.id.text_propos);
+        final TextView textNomView = root.findViewById(R.id.text_mNom);
         proposViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

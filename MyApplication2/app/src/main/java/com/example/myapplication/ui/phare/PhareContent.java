@@ -1,6 +1,8 @@
 package com.example.myapplication.ui.phare;
 
 
+import android.graphics.Color;
+
 import com.example.myapplication.MainActivity;
 
 import org.json.JSONArray;

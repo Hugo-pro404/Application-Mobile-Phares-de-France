@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.internal.IGoogleMapDelegate;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -60,11 +63,17 @@ public class MapsFragment extends Fragment {
         //Utilisation du JSON pour créer des markers avec les lat et lon des phares.
         List<PhareContent.PhareItem> Phares = PhareContent.ITEMS;
         for (PhareContent.PhareItem Item : Phares ){
+            int color = Color.parseColor("#50FFFF47");
             googleMap.addMarker(new MarkerOptions().position(new LatLng(Item.getLat(), Item.getLon())).title(Item.getNom()).icon(BitmapDescriptorFactory.fromResource(R.drawable.lighthouse_iconpetit)));
+            CircleOptions circleOptions = new CircleOptions().strokeWidth(2).center(new LatLng(Item.getLat(), Item.getLon())).fillColor(color).radius(Item.getPortee() * 1852);
+            Circle circle = googleMap.addCircle(circleOptions);
+            for (int i = 0; i < Item.getPeriode(); ++i) {
+
+            }
         }
         LatLng GARDANNE = new LatLng(43.45, 5.4717363151);
 
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(GARDANNE, 4));
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(GARDANNE, 5));
         if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(),
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION)

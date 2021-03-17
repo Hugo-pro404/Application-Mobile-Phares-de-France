@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 
@@ -45,6 +46,7 @@ public class MyPhareRecyclerViewAdapter extends RecyclerView.Adapter<MyPhareRecy
         holder.mView.setOnClickListener (new View.OnClickListener() {
         @Override
         public void onClick (View v) {
+//            Toast.makeText(getApplicationContext(),"", Toast.LENGTH_SHORT).show();
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
             alertDialogBuilder.setTitle(mValues.get(position).getNom());
             alertDialogBuilder.setMessage("Region : " + mValues.get(position).getRegion() + "\n"
